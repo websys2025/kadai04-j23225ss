@@ -75,6 +75,11 @@
 
             // 課題4-2. ここにコードを書く
             // 商品表の作成
+            const itemButtons = table.getElementById("item_buttons")
+            button.onclick = () => { alert("clicked!")};
+            for(let i = 0; i < items.length; i++){
+                itemArea.innerHTML += "<tr><th>" + item_list[i].name + "</th><th>" + item_list[i].price + "</th><th>" + item_list[i].stock + "</th><th></th></tr>";
+            }
 
             // クリックイベント時の購入処理の設定
             for (let i=0; i<item_list.length; i++) {
