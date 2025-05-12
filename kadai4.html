@@ -37,6 +37,12 @@
 
                     // 配列の内容を項目毎に出力
                     // 課題4-1. ここにコードを書く
+                    for(let i = 0; i < list.length; i++){
+                        console.log("id: " + list[i].id + 
+                                    ", name: " + list[i].name + 
+                                    ", price: " + list[i].price + 
+                                    ", stock: " + list[i].stock )
+                    }
                     console.log(""); // 空行の出力
                 }
                 
@@ -63,9 +69,17 @@
 
             // 課題4-1. ここにコード書く
             // 商品オブジェクトの生成
+            for(let i = 0; i < items.length; i++){
+                item_list[i] = new Item(items[i].name, items[i].price, items[i].stock)
+            }
 
             // 課題4-2. ここにコードを書く
             // 商品表の作成
+            const itemButtons = table.getElementById("item_buttons")
+            button.onclick = () => { alert("clicked!")};
+            for(let i = 0; i < items.length; i++){
+                itemArea.innerHTML += "<tr><th>" + item_list[i].name + "</th><th>" + item_list[i].price + "</th><th>" + item_list[i].stock + "</th><th></th></tr>";
+            }
 
             // クリックイベント時の購入処理の設定
             for (let i=0; i<item_list.length; i++) {
