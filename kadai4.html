@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1 id="vending-machine">自動販売機システム</h1>
-        <table id="item_area" border="1"></table> 
+        <table id="item_area" border="1"></table>
         <script>
             // 商品一覧を記録する連想配列の配列
             const items =  [
@@ -77,14 +77,11 @@
 
             // 課題4-2. ここにコードを書く
             // 商品表の作成
-            //const itemButtons = table.getElementById("item_buttons")
-            //button.onclick = () => { alert("clicked!")};
-            //let htbtn = "<button type="button" id="btn[i]">購入</button><div id="result"></div>"
             for(let i = 0; i < items.length; i++){
                 itemArea.innerHTML += "<tr><th>" + item_list[i].name + 
                                         "</th><th>" + item_list[i].price + 
                                         "</th><th>" + item_list[i].stock + 
-                                        "</th><th>" + "<button type='button' id='btn[i]'>購入</button><div id='result'></div>" + 
+                                        "</th><th>" + '<button type="button" id="btn'+item_list[i].id +'">購入</button' + 
                                         "</th></tr>";
             }
 
