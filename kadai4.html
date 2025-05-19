@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1 id="vending-machine">自動販売機システム</h1>
-        <table id="item_area" border="1"></table>
+        <table id="item_area" border="1"></table> 
         <script>
             // 商品一覧を記録する連想配列の配列
             const items =  [
@@ -62,6 +62,7 @@
             // 商品テーブルのエレメント抽出
             const itemArea = document.getElementById("item_area");
             itemArea.innerHTML += "<tr><th>商品名</th><th>金額</th><th>在庫数</th><th>購入</th></tr>";
+            
 
             // 配列のオブジェクト作成
             const item_list = new Array(items.length);
@@ -72,13 +73,19 @@
             for(let i = 0; i < items.length; i++){
                 item_list[i] = new Item(items[i].name, items[i].price, items[i].stock)
             }
+            
 
             // 課題4-2. ここにコードを書く
             // 商品表の作成
-            const itemButtons = table.getElementById("item_buttons")
-            button.onclick = () => { alert("clicked!")};
+            //const itemButtons = table.getElementById("item_buttons")
+            //button.onclick = () => { alert("clicked!")};
+            //let htbtn = "<button type="button" id="btn[i]">購入</button><div id="result"></div>"
             for(let i = 0; i < items.length; i++){
-                itemArea.innerHTML += "<tr><th>" + item_list[i].name + "</th><th>" + item_list[i].price + "</th><th>" + item_list[i].stock + "</th><th></th></tr>";
+                itemArea.innerHTML += "<tr><th>" + item_list[i].name + 
+                                        "</th><th>" + item_list[i].price + 
+                                        "</th><th>" + item_list[i].stock + 
+                                        "</th><th>" + "<button type='button' id='btn[i]'>購入</button><div id='result'></div>" + 
+                                        "</th></tr>";
             }
 
             // クリックイベント時の購入処理の設定
