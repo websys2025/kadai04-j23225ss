@@ -7,6 +7,7 @@
     <body>
         <h1 id="vending-machine">自動販売機システム</h1>
         <table id="item_area" border="1"></table>
+        <p>所持金：<p id="my_money"><span id="money"></span></p></p>
         <script>
             // 商品一覧を記録する連想配列の配列
             const items =  [
@@ -19,6 +20,9 @@
                 { id: 7, name: "コーヒー", price: 170, stock: 8 },
                 { id: 8, name: "紅茶", price: 140, stock: 6 }
             ]
+            // 所持金の設定
+            let money = 2000;
+            document.getElementById('my_money').innerText = money;
 
             // 商品用のクラス定義
             class Item {
@@ -48,17 +52,24 @@
                 
                 // 商品購入の関数
                 buyItem() {          
-                    if (this.stock >= 1) { 
-                        console.log("商品番号: "+this.id+", 商品名: "+this.name+"を購入します。");
-                        // 課題4-2. ここにコードを書く
-                        this.stock--;
-                        console.log("残りは"+this.stock+"個です。");
-                        // 購入による商品の在庫削減処理
-                        
-                        // 課題4-3. ここにコードを書く
-                        // 在庫用のエレメントを抽出し、HTML内の個数を更新
-                        const thistock = document.getElementById(`thistock${this.id}`);
-                        thistock.innerText = this.stock;
+                    if (this.stock >= 1 ) { 
+                        if(money >= this.price){
+                            // 所持金を減らし表示
+                            money = money - this.price;
+                            const money_set = document.getElementById('my_money');
+                            money_set.innerText = money;
+
+                            console.log("商品番号: "+this.id+", 商品名: "+this.name+"を購入しました。残高は"+money+"円です。");
+                            // 課題4-2. ここにコードを書く
+                            this.stock--;
+                            console.log("残りは"+this.stock+"個です。");
+                            // 購入による商品の在庫削減処理
+                            
+                            // 課題4-3. ここにコードを書く
+                            // 在庫用のエレメントを抽出し、HTML内の個数を更新
+                            const thistock = document.getElementById(`thistock${this.id}`);
+                            thistock.innerText = this.stock;
+                        } else console.log("所持金が足りないため購入できません。");
                     } else console.log(this.name+"は商品の在庫がないため購入できません。");
                 }
             } // End of Item class
